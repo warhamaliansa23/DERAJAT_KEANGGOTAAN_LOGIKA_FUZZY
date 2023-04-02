@@ -1,0 +1,117 @@
+import math
+
+# Fungsi keanggotaan Linear
+def linearNaik(x, a, b):
+    if x <= a:
+        return 0
+    elif x >= b:
+        return 1
+    else:
+        return (x-a)/(b-a)
+
+def linearTurun(x, a, b):
+    if x <= a:
+        return 1
+    elif x >= b:
+        return 0
+    else:
+        return (b-x)/(b-a)
+
+# Fungsi keanggotaan Segitiga
+def triangle(x, a, b, c):
+    if x <= a or x >= c:
+        return 0
+    elif x >= b:
+        return (c-x)/(c-b)
+    else:
+        return (x-a)/(b-a)
+
+# Fungsi keanggotaan Trapesium
+def trapezoid(x, a, b, c, d):
+    if x <= a or x >= d:
+        return 0
+    elif x >= b and x <= c:
+        return 1
+    elif x < b:
+        return (x-a)/(b-a)
+    else:
+        return (d-x)/(d-c)
+
+# Fungsi keanggotaan Sigmoid
+def sigmoid(x, a, b):
+    return 1 / (1 + math.exp(-a*(x-b)))
+
+# Fungsi keanggotaan Gauss
+def gauss(x, c, sigma):
+    return math.exp(-0.5*((x-c)/sigma)**2)
+
+# Fungsi keanggotaan Beta
+def beta(x, a, b, c, d):
+    if x <= a or x >= d:
+        return 0
+    elif x >= b and x <= c:
+        return 1
+    elif x < b:
+        return (x-a)/(b-a)
+    else:
+        return (d-x)/(d-c)
+
+# Main program
+
+print("Pilih jenis fungsi keanggotaan:")
+print("1. Linear")
+print("2. Segitiga")
+print("3. Trapesium")
+print("4. Sigmoid")
+print("5. Gauss")
+print("6. Beta")
+pilihan = int(input("Masukkan pilihan (1-6): "))
+    
+if pilihan == 1:
+    
+    print("Pilih jenis liner:")
+    print("1. Linear naik")
+    print("2. linear turun")
+    pilihan = int(input("Masukkan pilihan (1-6): "))
+    if pilihan == 1:
+        a = float(input("Masukkan nilai a: "))
+        b = float(input("Masukkan nilai b: "))
+        x = float(input("Masukkan nilai x: "))
+        print("Derajat keanggotaan: ", linearNaik(x, a, b))
+    if pilihan == 2:
+        a = float(input("Masukkan nilai a: "))
+        b = float(input("Masukkan nilai b: "))
+        x = float(input("Masukkan nilai x: "))
+        print("Derajat keanggotaan: ", linearTurun(x, a, b))
+elif pilihan == 2:
+    a = float(input("Masukkan nilai a: "))
+    b = float(input("Masukkan nilai b: "))
+    c = float(input("Masukkan nilai c: "))
+    x = float(input("Masukkan nilai x: "))
+    print("Derajat keanggotaan: ", triangle(x, a, b, c))
+elif pilihan == 3:
+    a = float(input("Masukkan nilai a: "))
+    b = float(input("Masukkan nilai b: "))
+    c = float(input("Masukkan nilai c: "))
+    d = float(input("Masukkan nilai d: "))
+    x = float(input("Masukkan nilai x: "))
+    print("Derajat keanggotaan: ", trapezoid(x, a, b, c, d))
+elif pilihan == 4:
+    a = float(input("Masukkan nilai a: "))
+    b = float(input("Masukkan nilai b: "))
+    x = float(input("Masukkan nilai x: "))
+    print("Derajat keanggotaan: ", sigmoid(x, a, b))
+elif pilihan == 5:
+    c = float(input("Masukkan nilai c: "))
+    sigma = float(input("Masukkan nilai sigma: "))
+    x = float(input("Masukkan nilai x: "))
+    print("Derajat keanggotaan: ", gauss(x, c, sigma))
+elif pilihan == 6:
+    a = float(input("Masukkan nilai a: "))
+    b = float(input("Masukkan nilai b: "))
+    c = float(input("Masukkan nilai c: "))
+    d = float(input("Masukkan nilai d: "))
+    x = float(input("Masukkan nilai x: "))
+    print("Derajat keanggotaan: ", beta(x, a, b, c, d))
+else:
+    print("Pilihan tidak valid!")
